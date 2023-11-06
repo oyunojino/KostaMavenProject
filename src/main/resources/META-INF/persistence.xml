@@ -23,7 +23,7 @@
 
             <!-- 테이블 생성 옵션
                     create / create-drop / validate / update / none -->
-            <!-- <property name="hibernate.hbm2ddl.auto" value="create" />-->
+            <property name="hibernate.hbm2ddl.auto" value="none"/>
         </properties>
     </persistence-unit>
 </persistence>

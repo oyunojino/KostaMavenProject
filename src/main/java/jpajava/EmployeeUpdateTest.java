@@ -1,5 +1,6 @@
 package jpajava;
 
+import domain.Department;
 import domain.Employee;
 
 import javax.persistence.EntityManager;
@@ -18,15 +19,20 @@ public class EmployeeUpdateTest {
     try {
       Employee emp = new Employee();
 
-      Employee e1 = em.find(Employee.class, "202304");
+      Employee e1 = em.find(Employee.class, "202301");
       System.out.println("<-- DB에서 가져옴 -->");
       System.out.println("<-- 영속 상태 -->");
 
       System.out.println("<-- 수정 전 -->");
-      e1.setDeptId(3);
+//      e1.setDeptId(3);
+      System.out.println("현재 부서는 : " +  e1.getDepartment().getDeptName());
 
-      em.persist(e1);
+      Department newDept = em.find(Department.class, 1);
+      newDept.setDeptName("newTeam");
+      em.persist(newDept);
+
       System.out.println("<-- 수정 후 -->");
+      System.out.println("수정 후의 부서는 : " + e1.getDepartment().getDeptName());
 
 
       System.out.println("<-- 커밋 전 -->");
